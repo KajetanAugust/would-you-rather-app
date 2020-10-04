@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-class QuestionList extends Component {
+class Leaderboard extends Component {
     render() {
         return (
             <div>
-                Question List
+                Leaderboards
             </div>
         );
     }
 }
 
-export default QuestionList;
+export default Leaderboard;

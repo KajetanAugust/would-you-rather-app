@@ -95,7 +95,7 @@ code {
   padding-left: 15px;
 }
 
-.login-window button, .create-question button{
+.login-window button, .create-question button {
   width: 33%;
   height: 40px;
   margin-top: 15px;
@@ -125,3 +125,62 @@ code {
   color: lightgray;
   font-weight: 300;
 }
+
+/*///////////////////////////*/
+/*  QUESTION DISPLAY STYLES  */
+/*///////////////////////////*/
+
+.question-box {
+  border: 1px solid lightgray;
+  width:45%;
+  margin: 25px auto;
+}
+
+.question-box h3 {
+  background-color: lightgray;
+  padding: 12px;
+  margin-top:0;
+}
+
+.question-and-avatar-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 25px;
+}
+
+.question-and-avatar-wrapper h2 {
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.question-and-avatar-wrapper img {
+  border-right: 1px solid lightgray;
+  padding-right: 25px;
+  margin-right: 25px;
+}
+
+.question-and-avatar-wrapper label {
+  font-size: 1.2rem;
+}
+
+.question-and-avatar-wrapper input {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.question-and-avatar-wrapper button {
+  width: 66%;
+  height: 40px;
+  margin-top: 30px;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  background-color: lightblue;
+  font-size: 1.2rem;
+  color: white;
+  margin-right: 0;
+  margin-left: 66%;
+}
+

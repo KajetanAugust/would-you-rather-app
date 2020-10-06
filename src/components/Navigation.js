@@ -11,7 +11,7 @@ class Navigation extends Component {
                     <p>Leaderboard</p>
                 </div>
                 <div className='player-logout'>
-                    <p>Hello, $PLAYER_NAME</p>
+                    <p>Hello, $ACTIVE_PLAYER_NAME</p>
                     <img className='nav-avatar' alt="User's avatar" src='https://avatars.dicebear.com/api/bottts/.svg?r=50&m=10&b=%23fff2d5&w=200&h=200&colors[]=deepOrange' />
                     <p>Logout</p>
                 </div>

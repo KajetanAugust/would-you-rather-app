@@ -70,7 +70,6 @@ code {
   width: 33%;
   height: 600px;
   margin: 25px auto;
-  /*border:1px solid palegreen;*/
 }
 
 .app-logo {
@@ -89,15 +88,14 @@ code {
   align-items: center;
 }
 
-.login-window select {
+.login-window select, .create-question input{
   width: 60%;
   height: 40px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding-left: 15px;
-
 }
 
-.login-window button {
+.login-window button, .create-question button{
   width: 33%;
   height: 40px;
   margin-top: 15px;
@@ -106,4 +104,24 @@ code {
   background-color: lightblue;
   font-size: 1.2rem;
   color: white;
+}
+
+/*//////////////////////////*/
+/*  CREATE QUESTION STYLES  */
+/*//////////////////////////*/
+
+.create-question {
+  /*border: 1px solid lightblue;*/
+  margin: 25px auto;
+  width: 33%;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-question input::placeholder{
+  color: lightgray;
+  font-weight: 300;
 }

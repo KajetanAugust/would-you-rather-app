@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
 
 class Navigation extends Component {
     render() {
@@ -20,4 +21,4 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation;
+export default connect()(Navigation);

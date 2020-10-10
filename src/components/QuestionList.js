@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
 
 class QuestionList extends Component {
     render() {
@@ -102,4 +103,4 @@ class QuestionList extends Component {
     }
 }
 
-export default QuestionList;
+export default connect()(QuestionList);

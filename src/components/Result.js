@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
 
 class Result extends Component {
     render() {
@@ -29,4 +30,4 @@ class Result extends Component {
     }
 }
 
-export default Result;
+export default connect()(Result);

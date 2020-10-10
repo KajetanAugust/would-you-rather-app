@@ -1,32 +1,54 @@
 import React, { Component, Fragment } from 'react';
-import { handleInitialData } from "../actions/shared";
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
+import { handleInitialData } from "../actions/shared";
 import LoadingBar from 'react-redux-loading'
-// import Navigation from "./Navigation";
 import Login from "./Login";
-// import NewQuestion from "./NewQuestion";
-// import Question from "./Question";
-// import Result from "./Result";
-
+import Navigation from "./Navigation";
+import NewQuestion from "./NewQuestion";
+import Question from "./Question";
+import Result from "./Result";
 import QuestionList from "./QuestionList";
+import Leaderboard from "./Leaderboard";
 
 class App extends Component {
+
 
     componentDidMount() {
         this.props.dispatch(handleInitialData());
     }
 
     render() {
-        return (
-            <Fragment>
-                <LoadingBar />
-                <div className="App">
+        const {authUser} = this.props
 
-                    <Login />
-                </div>
-            </Fragment>
+        return (
+            <Router>
+                <Fragment>
+                    <LoadingBar />
+                        <div className='container'>
+                            {
+                                this.props.loading === true
+                                    ?
+                                    null
+                                    :
+                                    <div>
+                                        <Navigation />
+                                        <Route exact path='/' component={QuestionList}/>
+                                        <Route path='/login' component={Login} />
+                                        <Route path='/new-question' component={NewQuestion} />
+                                        <Route path='/leaderboard' component={Leaderboard} />
+                                    </div>
+                            }
+                        </div>
+                </Fragment>
+            </Router>
         );
+    }
+}
+
+function mapStateToProps ({ authedUser}) {
+    return {
+        loading: authedUser === null
     }
 }
 

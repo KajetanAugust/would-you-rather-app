@@ -14,12 +14,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
 /*/////////////////////*/
 /*  NAVIGATION STYLES  */
 /*/////////////////////*/
@@ -45,9 +39,26 @@ code {
   margin-left: 50px;
 }
 
-.menu p, .player-logout p {
+.player-logout p, .menu-link {
   margin: auto 15px;
 }
+
+.menu-link {
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.menu-link:visited {
+  color: black;
+}
+
+ .menu-link:hover {
+   background: lightsalmon;
+   border-radius: 15px;
+   color: white;
+ }
 
 .player-logout {
   margin-right: 50px;

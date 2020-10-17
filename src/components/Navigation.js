@@ -5,9 +5,10 @@ import { NavLink } from 'react-router-dom'
 class Navigation extends Component {
     render() {
 
-        const {authUser, users} = this.props
-        // const user = users.includes(authUser) && users.filter(user => authUser.id === user.id)
-        console.log(users)
+        const {authUser, users} = this.props;
+        // const user = authUser ? users.filter(user => authUser === user.id) : null;
+        // console.log(users)
+        console.log(authUser)
 
         return (
             <div className='navigation'>
@@ -18,7 +19,7 @@ class Navigation extends Component {
                     <NavLink to='/leaderboard' className='menu-link'>Leaderboard</NavLink>
                 </div>
                 <div className='player-logout'>
-                    <p>Hello, {authUser} </p>
+                    <p>Hello, {authUser}</p>
                     <img className='nav-avatar' alt="User's avatar" src='https://avatars.dicebear.com/api/bottts/.svg?r=50&m=10&b=%23fff2d5&w=200&h=200&colors[]=deepOrange' />
                     <NavLink to='/login' className='menu-link'>Logout</NavLink>
                 </div>
@@ -27,11 +28,11 @@ class Navigation extends Component {
     }
 }
 
-function mapStateToProps ({ authUser, users }) {
-
+function mapStateToProps ({ authUser, users }, {id}) {
+        const userData = users.filter((user) => (user.id === id));
     return {
         authUser: authUser,
-        users: users
+        user: userData
     }
 }
 

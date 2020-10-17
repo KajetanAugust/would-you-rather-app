@@ -1,22 +1,37 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
+import { Link, withRouter } from 'react-router-dom';
+import {formatQuestion} from "../utils/helpers";
 
 class Question extends Component {
     render() {
+
+        const { question } = this.props
+
+        if( question === null) {
+            return <p>This Question doesnt exist.</p>
+        }
+
+        const {
+            id, author, timestamp, optionOne, optionTwo, avatar, name
+        } = question
+
+
+        // console.log( question)
         return (
             <div className='question-box'>
-                <h3>$QUESTION_AUTHOR asks:</h3>
+                <h3>{name} asks:</h3>
                 <div className='question-and-avatar-wrapper'>
-                    <img className='question-author-avatar' alt="Author's avatar" src='https://avatars.dicebear.com/api/bottts/.svg?r=50&m=10&b=%23fff2d5&w=200&h=200&colors[]=deepOrange'/>
+                    <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
                     <form>
                         <h2>Would You Rather...</h2>
                         <input type="radio" id="optionOne" name="options" value="OptionOne"/>
-                            <label htmlFor="OptionOne">Option One</label>
+                            <label htmlFor="OptionOne">{optionOne.text}</label>
 
                         <br/>
 
                         <input type="radio" id="OptionTwo" name="options" value="OptionTwo"/>
-                            <label htmlFor="OptionTwo">Option Two</label>
+                            <label htmlFor="OptionTwo">{optionTwo.text}</label>
                         <br />
                         <button type='submit'>Submit</button>
                     </form>
@@ -26,4 +41,14 @@ class Question extends Component {
     }
 }
 
-export default connect()(Question);
+function mapStateToProps ({authedUser, users, questions}, {id}) {
+    const question = questions[id]
+
+    return {
+        authedUser,
+        question: question ? formatQuestion(question, users[question.author], authedUser ) : null,
+        users: users
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(Question))

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import { connect } from 'react-redux';
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from 'react-redux-loading'
@@ -10,29 +10,30 @@ import Question from "./Question";
 import Result from "./Result";
 import QuestionList from "./QuestionList";
 import Leaderboard from "./Leaderboard";
+import authUser from "../reducers/authUser";
 
 class App extends Component {
-
 
     componentDidMount() {
         this.props.dispatch(handleInitialData());
     }
 
     render() {
-        const {authUser} = this.props
 
+        const {loading} = this.props
+        console.log(loading)
         return (
             <Router>
                 <Fragment>
                     <LoadingBar />
                         <div className='container'>
                             {
-                                this.props.loading === true
+                                loading === true
                                     ?
                                     null
                                     :
                                     <div>
-                                        <Navigation />
+                                        <Navigation id={authUser}/>
                                         <Route exact path='/' component={QuestionList}/>
                                         <Route path='/login' component={Login} />
                                         <Route path='/new-question' component={NewQuestion} />
@@ -46,9 +47,9 @@ class App extends Component {
     }
 }
 
-function mapStateToProps ({ authedUser}) {
+function mapStateToProps ({ authUser }) {
     return {
-        loading: authedUser === null
+        loading: authUser === null
     }
 }
 

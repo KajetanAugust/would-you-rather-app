@@ -3,12 +3,11 @@ import {connect} from "react-redux";
 import { NavLink } from 'react-router-dom'
 
 class Navigation extends Component {
+
     render() {
 
-        const {authUser, users} = this.props;
-        // const user = authUser ? users.filter(user => authUser === user.id) : null;
-        // console.log(users)
-        console.log(authUser)
+        const {authedUser, userData} = this.props;
+        console.log(userData)
 
         return (
             <div className='navigation'>
@@ -18,22 +17,28 @@ class Navigation extends Component {
                     <NavLink to='/new-question' className='menu-link'>New Question</NavLink>
                     <NavLink to='/leaderboard' className='menu-link'>Leaderboard</NavLink>
                 </div>
-                <div className='player-logout'>
-                    <p>Hello, {authUser}</p>
-                    <img className='nav-avatar' alt="User's avatar" src='https://avatars.dicebear.com/api/bottts/.svg?r=50&m=10&b=%23fff2d5&w=200&h=200&colors[]=deepOrange' />
-                    <NavLink to='/login' className='menu-link'>Logout</NavLink>
-                </div>
+                {
+                    !userData
+                        ?
+                            null
+                        :
+                            <div className='player-logout'>
+                                        <p>Hello, {userData.name}</p>
+                                        <img className='nav-avatar' alt="User's avatar" src={userData.avatarURL} />
+                                        <NavLink to='/login' className='menu-link'>Logout</NavLink>
+                            </div>
+                }
             </div>
         );
     }
 }
 
-function mapStateToProps ({ authUser, users }, {id}) {
-        const userData = users.filter((user) => (user.id === id));
+function mapStateToProps({ authedUser, users }) {
+    const userData = users[authedUser];
     return {
-        authUser: authUser,
-        user: userData
-    }
+        authedUser,
+        userData
+    };
 }
 
 export default connect(mapStateToProps)(Navigation);

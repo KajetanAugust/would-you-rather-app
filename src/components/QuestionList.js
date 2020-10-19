@@ -46,11 +46,11 @@ class QuestionList extends Component {
 }
 
 
-// function mapStateToProps({questions, users, authUser}) {
+// function mapStateToProps({questions, users, authedUser}) {
 //     return {
 //         questions,
 //         users,
-//         authUser
+//         authedUser
 //     }
 // }
 

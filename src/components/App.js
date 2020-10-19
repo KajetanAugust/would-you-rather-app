@@ -10,7 +10,7 @@ import Question from "./Question";
 import Result from "./Result";
 import QuestionList from "./QuestionList";
 import Leaderboard from "./Leaderboard";
-import authUser from "../reducers/authUser";
+import authedUser from "../reducers/authedUser";
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
 
     render() {
 
-        const {loading} = this.props
+        const { loading } = this.props
         console.log(loading)
         return (
             <Router>
@@ -33,7 +33,7 @@ class App extends Component {
                                     null
                                     :
                                     <div>
-                                        <Navigation id={authUser}/>
+                                        <Navigation id={authedUser}/>
                                         <Route exact path='/' component={QuestionList}/>
                                         <Route path='/login' component={Login} />
                                         <Route path='/new-question' component={NewQuestion} />
@@ -47,9 +47,9 @@ class App extends Component {
     }
 }
 
-function mapStateToProps ({ authUser }) {
+function mapStateToProps ({ authedUser }) {
     return {
-        loading: authUser === null
+        loading: authedUser === null
     }
 }
 

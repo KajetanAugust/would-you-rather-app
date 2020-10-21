@@ -23,9 +23,9 @@ class Navigation extends Component {
                             null
                         :
                             <div className='player-logout'>
-                                        <p>Hello, {userData.name}</p>
-                                        <img className='nav-avatar' alt="User's avatar" src={userData.avatarURL} />
-                                        <NavLink to='/login' className='menu-link'>Logout</NavLink>
+                                <p>Hello, {userData.name}</p>
+                                <img className='nav-avatar' alt="User's avatar" src={userData.avatarURL} />
+                                <NavLink to='/login' className='menu-link'>Logout</NavLink>
                             </div>
                 }
             </div>

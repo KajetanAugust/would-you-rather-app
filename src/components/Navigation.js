@@ -11,7 +11,6 @@ class Navigation extends Component {
         logoutUser();
     }
 
-
     render() {
 
         const {authedUser, userData} = this.props;

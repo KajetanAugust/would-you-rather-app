@@ -5,26 +5,27 @@ import {setAuthedUser} from "../actions/authedUser";
 
 class Login extends Component {
 
+    state = {
+        loginValue: this.props.authedUser,
+    }
+
     handleChange = (e) => {
         const newValue = e.target.value;
-        this.setState(() => ({
+        console.log(newValue)
+        this.setState({
             loginValue: newValue
-        }))
+        })
+        console.log(this.state.loginValue)
     }
-    //TODO: add button functionality for submitting login user
 
     handleSubmit = (e) => {
         e.preventDefault()
         const { loginValue } = this.state
-        const { dispatch } = this.props
-        dispatch(setAuthedUser(loginValue))
+        const { loginUser } = this.props
+        loginUser(loginValue)
     }
 
     render() {
-        this.state = {
-            loginValue: ''
-        }
-
         return (
             <div className='login-window-container'>
                 <div className='login-window'>
@@ -32,8 +33,7 @@ class Login extends Component {
                     <h2>Choose a player</h2>
                     <form onSubmit={this.handleSubmit}>
                         <select
-                            onChange={(e) => this.handleChange(e)}
-                            // value={this.state.loginValue}
+                            onClick={(e) => this.handleChange(e)}
                         >
                             <option value='sarahedo'>Sarah Edo</option>
                             <option value='tylermcginnis'>Tyler McGinnis</option>
@@ -47,5 +47,19 @@ class Login extends Component {
     }
 }
 
+function mapStateToProps({ users, authedUser }) {
+    return {
+        users,
+        authedUser
+    };
+}
 
-export default connect()(Login);
+function mapDispatchToProps(dispatch) {
+    return {
+        loginUser: (id) => {
+            dispatch(setAuthedUser(id));
+        },
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

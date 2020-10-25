@@ -12,13 +12,26 @@ class Player extends Component {
         }
 
         const {
-             name, answers, avatarURL
+             name, answers, questions,  avatarURL
         } = user
 
         return (
             <div>
+                <div className='player-box'>
+                    <h3>{name}</h3>
+                    <div className='scores-wrapper'>
+                        <img className='question-author-avatar' alt="Author's avatar" src={avatarURL}/>
+                        <div className='player-results'>
+                            <h2>Answered Questions: {Object.keys(answers).length}</h2>
+                            <h2>Created Questions: {questions.length}</h2>
+                        </div>
+                        <div className='total-score'>
+                            <h2>{questions.length + Object.keys(answers).length}</h2>
+                            <p>points</p>
+                        </div>
 
-                <p>{name}</p>
+                    </div>
+                </div>
             </div>
         );
     }

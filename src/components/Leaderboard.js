@@ -7,7 +7,6 @@ class Leaderboard extends Component {
     render() {
         return (
             <div>
-                Leaderboards
                 {
                     this.props.usersIds.map((id) => (
                         <Player id={id}/>

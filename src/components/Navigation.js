@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
 import { NavLink } from 'react-router-dom'
+import { deleteAuthedUser } from "../actions/authedUser";
 
 class Navigation extends Component {
+
+    handleLogout = (e) => {
+        e.preventDefault();
+        const { logoutUser } = this.props
+        logoutUser();
+    }
+
 
     render() {
 
         const {authedUser, userData} = this.props;
-        console.log(userData)
-
         return (
             <div className='navigation'>
                 <div className='menu'>
@@ -25,7 +31,7 @@ class Navigation extends Component {
                             <div className='player-logout'>
                                 <p>Hello, {userData.name}</p>
                                 <img className='nav-avatar' alt="User's avatar" src={userData.avatarURL} />
-                                <NavLink to='/login' className='menu-link'>Logout</NavLink>
+                                <NavLink onClick={(e) => {this.handleLogout(e)}} to='/login' className='menu-link' >Logout</NavLink>
                             </div>
                 }
             </div>
@@ -36,9 +42,16 @@ class Navigation extends Component {
 function mapStateToProps({ authedUser, users }) {
     const userData = users[authedUser];
     return {
-        authedUser,
         userData
     };
 }
 
-export default connect(mapStateToProps)(Navigation);
+function mapDispatchToProps(dispatch) {
+    return {
+        logoutUser: () => {
+            dispatch(deleteAuthedUser());
+        },
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

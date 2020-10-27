@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import { connect } from 'react-redux';
-import { handleInitialData } from "../actions/shared";
 import LoadingBar from 'react-redux-loading'
+
 import Login from "./Login";
 import Navigation from "./Navigation";
 import NewQuestion from "./NewQuestion";
@@ -10,6 +10,8 @@ import Question from "./Question";
 import Result from "./Result";
 import QuestionList from "./QuestionList";
 import Leaderboard from "./Leaderboard";
+
+import { handleInitialData } from "../actions/shared";
 import authedUser from "../reducers/authedUser";
 
 class App extends Component {

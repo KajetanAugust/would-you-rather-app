@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading'
 
+import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
 import Navigation from "./Navigation";
 import NewQuestion from "./NewQuestion";
@@ -12,7 +13,7 @@ import QuestionList from "./QuestionList";
 import Leaderboard from "./Leaderboard";
 
 import { handleInitialData } from "../actions/shared";
-import authedUser from "../reducers/authedUser";
+// import authedUser from "../reducers/authedUser";
 
 class App extends Component {
 
@@ -22,26 +23,31 @@ class App extends Component {
 
     render() {
 
-        const { loading } = this.props
+        const { loading, authedUser } = this.props
         console.log(loading)
+        console.log(authedUser)
         return (
             <Router>
                 <Fragment>
                     <LoadingBar />
                         <div className='container'>
-                            {
-                                loading === true
-                                    ?
-                                    null
-                                    :
-                                    <div>
-                                        <Navigation id={authedUser}/>
-                                        <Route exact path='/' component={QuestionList}/>
-                                        <Route path='/login' component={Login} />
-                                        <Route path='/new-question' component={NewQuestion} />
-                                        <Route path='/leaderboard' component={Leaderboard} />
-                                    </div>
-                            }
+                            <Switch>
+                                <Route path="/login">
+                                    <Login />
+                                </Route>
+                                <PrivateRoute exact path='/'>
+                                    <Navigation id={authedUser} />
+                                    <QuestionList />
+                                </PrivateRoute>
+                                <PrivateRoute path="/leaderboard">
+                                    <Navigation id={authedUser} />
+                                    <Leaderboard />
+                                </PrivateRoute>
+                                <PrivateRoute path='/new-question'>
+                                    <Navigation id={authedUser} />
+                                    <NewQuestion />
+                                </PrivateRoute>
+                            </Switch>
                         </div>
                 </Fragment>
             </Router>
@@ -51,7 +57,8 @@ class App extends Component {
 
 function mapStateToProps ({ authedUser }) {
     return {
-        loading: authedUser === null
+        loading: authedUser === null,
+        authedUser
     }
 }
 

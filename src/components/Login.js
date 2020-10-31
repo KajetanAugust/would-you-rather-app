@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import {setAuthedUser} from "../actions/authedUser";
+import { Redirect } from 'react-router-dom';
+import authedUser from "../reducers/authedUser";
 
 
 class Login extends Component {
 
     state = {
         loginValue: this.props.authedUser,
+        toHome: false
     }
 
     handleChange = (e) => {
@@ -22,10 +25,19 @@ class Login extends Component {
         e.preventDefault()
         const { loginValue } = this.state
         const { loginUser } = this.props
-        loginUser(loginValue)
+        loginUser(loginValue);
+
+        this.setState(() => ({
+            text: '',
+            toHome: authedUser ? true : false,
+        }))
     }
 
     render() {
+        if(this.state.toHome === true) {
+            return <Redirect to='/' />
+        }
+
         return (
             <div className='login-window-container'>
                 <div className='login-window'>

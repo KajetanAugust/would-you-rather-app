@@ -1,19 +1,36 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { deleteAuthedUser } from "../actions/authedUser";
 
 class Navigation extends Component {
+
+    state = {
+        toLogin: false,
+
+    }
 
     handleLogout = (e) => {
         e.preventDefault();
         const { logoutUser } = this.props
         logoutUser();
+
+        this.setState({
+            toLogin: true
+        })
     }
+
+
 
     render() {
 
         const {authedUser, userData} = this.props;
+        const { toLogin } = this.state;
+
+        if(toLogin === true) {
+            return <Redirect to='/Login' />
+        }
+
         return (
             <div className='navigation'>
                 <div className='menu'>

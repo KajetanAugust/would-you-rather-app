@@ -17,7 +17,6 @@ class Question extends Component {
         } = question
 
 
-        // console.log( question)
         return (
             <div className='question-box'>
                 <h3>{name} asks:</h3>

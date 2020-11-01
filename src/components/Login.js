@@ -16,7 +16,7 @@ class Login extends Component {
         const newValue = e.target.value;
         console.log(newValue)
         this.setState({
-            loginValue: newValue
+                loginValue: newValue
         })
         console.log(this.state.loginValue)
     }
@@ -45,8 +45,9 @@ class Login extends Component {
                     <h2>Choose a player</h2>
                     <form onSubmit={this.handleSubmit}>
                         <select
-                            onClick={(e) => this.handleChange(e)}
+                            onChange={(e) => this.handleChange(e)}
                         >
+                            <option value='none' disabled selected>-- Select User --</option>
                             <option value='sarahedo'>Sarah Edo</option>
                             <option value='tylermcginnis'>Tyler McGinnis</option>
                             <option value='johndoe'>John Doe</option>

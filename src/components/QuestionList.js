@@ -14,7 +14,10 @@ class QuestionList extends Component {
 
                         {
                             this.props.questionsIds.map((id) => (
-                            <Question id={id}/>
+                            <Question
+                                id={id}
+                                key={id}
+                            />
                             ))
                         }
                     </div>

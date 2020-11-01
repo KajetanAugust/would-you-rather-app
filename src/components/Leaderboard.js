@@ -8,7 +8,10 @@ class Leaderboard extends Component {
             <div>
                 {
                     this.props.usersIds.map((id) => (
-                        <Player id={id}/>
+                        <Player
+                            id={id}
+                            key={id}
+                        />
                     ))
                 }
             </div>

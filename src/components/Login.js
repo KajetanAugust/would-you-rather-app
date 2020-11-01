@@ -46,9 +46,10 @@ class Login extends Component {
                     <h2>Choose a player</h2>
                     <form onSubmit={this.handleSubmit}>
                         <select
+                            defaultValue='none'
                             onChange={(e) => this.handleChange(e)}
                         >
-                            <option value='none' disabled selected>-- Select User --</option>
+                            <option value='none' disabled>-- Select User --</option>
                             <option value='sarahedo'>Sarah Edo</option>
                             <option value='tylermcginnis'>Tyler McGinnis</option>
                             <option value='johndoe'>John Doe</option>

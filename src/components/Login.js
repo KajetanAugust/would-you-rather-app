@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import {setAuthedUser} from "../actions/authedUser";
 import { Redirect } from 'react-router-dom';
-import authedUser from "../reducers/authedUser";
 
+import authedUser from "../reducers/authedUser";
+import {setAuthedUser} from "../actions/authedUser";
 
 class Login extends Component {
 
@@ -14,11 +14,11 @@ class Login extends Component {
 
     handleChange = (e) => {
         const newValue = e.target.value;
-        console.log(newValue)
+        // console.log(newValue)
         this.setState({
                 loginValue: newValue
         })
-        console.log(this.state.loginValue)
+        // console.log(this.state.loginValue)
     }
 
     handleSubmit = (e) => {
@@ -34,6 +34,7 @@ class Login extends Component {
     }
 
     render() {
+
         if(this.state.toHome === true) {
             return <Redirect to='/' />
         }

@@ -5,7 +5,7 @@ import {
 } from "../actions/questions";
 
 
-export default function tweets (state = {}, action) {
+export default function questions (state = {}, action) {
     switch (action.type) {
 
         case RECIEVE_QUESTIONS :

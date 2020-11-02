@@ -30,29 +30,42 @@ class Question extends Component {
             return <p>This Question doesnt exist.</p>
         }
 
-
-
-
-
-
         return (
             <div className={this.checkForAnswer(questionAnswers, authedUser)}>
                 <h3>{name} asks:</h3>
-                <div className='question-and-avatar-wrapper'>
-                    <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
-                    <form>
-                        <h2>Would You Rather...</h2>
-                        <input type="radio" id="optionOne" name="options" value="OptionOne"/>
-                            <label htmlFor="OptionOne">{optionOne.text}</label>
 
-                        <br/>
 
-                        <input type="radio" id="OptionTwo" name="options" value="OptionTwo"/>
-                            <label htmlFor="OptionTwo">{optionTwo.text}</label>
-                        <br />
-                        <button type='submit'>Submit</button>
-                    </form>
-                </div>
+                    {
+                        this.checkForAnswer(questionAnswers, authedUser) === 'question-box unanswered'
+                            ?
+                                <div className='question-and-avatar-wrapper'>
+                                    <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
+                                    <form>
+                                        <h2>Would You Rather...</h2>
+                                        <input type="radio" id="optionOne" name="options" value="OptionOne"/>
+                                        <label htmlFor="OptionOne">{optionOne.text}</label>
+
+                                        <br/>
+
+                                        <input type="radio" id="OptionTwo" name="options" value="OptionTwo"/>
+                                        <label htmlFor="OptionTwo">{optionTwo.text}</label>
+                                        <br />
+                                        <button type='submit'>Submit</button>
+                                    </form>
+                                </div>
+                            :
+                                <div className='question-and-avatar-wrapper'>
+                                    <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
+                                    <form>
+                                        <h2>Would You Rather...</h2>
+                                        {/*<input type="radio" id="optionOne" name="options" value="OptionOne"/>*/}
+                                        <p className='options-preview'>{optionOne.text}</p>
+                                        <h2 className='dots'>...</h2>
+                                        <button type='submit'>See answers</button>
+                                    </form>
+                                </div>
+                    }
+
             </div>
         );
     }

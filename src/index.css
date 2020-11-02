@@ -174,7 +174,7 @@ body {
   margin-right: 25px;
 }
 
-.question-and-avatar-wrapper label {
+.question-and-avatar-wrapper label, .question-and-avatar-wrapper p {
   font-size: 1.2rem;
 }
 
@@ -195,9 +195,17 @@ body {
   margin-right: 0;
 }
 
+.dots, .options-preview {
+  margin-top:0;
+  margin-bottom: 0;
+  color:gray;
+}
+
+
 /*//////////////////////////*/
 /*  RESULTS DISPLAY STYLES  */
 /*//////////////////////////*/
+
 
 .result-answer-box {
   border: 1px solid lightgray;
@@ -215,6 +223,49 @@ body {
   margin-bottom: 15px;
   margin-top: 15px;
   font-weight: 600;
+}
+
+/*/////////////////////////*/
+/*  QUESTIONS LIST STYLES  */
+/*/////////////////////////*/
+
+.questions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "answered unanswered";
+  grid-auto-flow: column;
+  grid-gap: 5px;
+  margin: 25px 25px;
+}
+
+.answered {
+  grid-area: answered;
+  grid-row-start: auto;
+  grid-row-end: auto;
+  border-color: lightgreen;
+}
+
+.answered h3 {
+  background-color: lightgreen;
+}
+
+.unanswered {
+  grid-area:unanswered;
+  grid-row-start: inherit;
+  grid-row-end: auto;
+  border-color: lightsalmon;
+}
+
+.unanswered h3 {
+  background-color: lightsalmon;
+}
+
+h2.answered, h2.unanswered {
+  text-align: center;
+}
+
+.question-box {
+  width: 80%;
 }
 
 /*///////////////////////*/

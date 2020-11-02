@@ -4,8 +4,7 @@ import Question from "./Question";
 
 class QuestionList extends Component {
     render() {
-            const {questions} = this.props
-        console.log(this.props.questions)
+            const { questions } = this.props
         return (
             <div className='question-lists'>
                 <div className='answered-questions'>

@@ -4,18 +4,6 @@ import Question from "./Question";
 
 class QuestionList extends Component {
 
-    state = {
-        questionType: true
-    }
-
-    handleQuestionsSwitch = () => {
-        const questionTypeToSet = this.state.questionType
-
-        this.setState({
-            questionType: !questionTypeToSet
-        })
-    }
-
     render() {
             const { questions } = this.props
         return (

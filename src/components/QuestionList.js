@@ -16,6 +16,7 @@ class QuestionList extends Component {
                             <Question
                                 id={id}
                                 key={id}
+                                fromList={true}
                             />
                             ))
                         }

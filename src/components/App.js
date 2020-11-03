@@ -7,10 +7,11 @@ import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
 import Navigation from "./Navigation";
 import NewQuestion from "./NewQuestion";
-import Question from "./Question";
+// import Question from "./Question";
 import Result from "./Result";
 import QuestionList from "./QuestionList";
 import Leaderboard from "./Leaderboard";
+import PollDetails from "./PollDetails";
 
 import { handleInitialData } from "../actions/shared";
 // import authedUser from "../reducers/authedUser";
@@ -43,13 +44,13 @@ class App extends Component {
                                     <Navigation id={authedUser} />
                                     <Leaderboard />
                                 </PrivateRoute>
-                                <PrivateRoute path='/new-question'>
+                                <PrivateRoute path='/add'>
                                     <Navigation id={authedUser} />
                                     <NewQuestion />
                                 </PrivateRoute>
-                                <PrivateRoute path='/result/:id' >
+                                <PrivateRoute path='/question/:question_id' >
                                     <Navigation id={authedUser} />
-                                    <Result />
+                                    <PollDetails />
                                 </PrivateRoute>
                             </Switch>
                         </div>

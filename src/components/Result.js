@@ -14,7 +14,8 @@ class Result extends Component {
 
     render() {
 
-        let id = window.location.pathname.slice(8);
+        // let id = window.location.pathname.slice(9);
+        let id = this.props.id
         // console.log(id)
         const question = this.props.questions[id]
         // console.log(question)

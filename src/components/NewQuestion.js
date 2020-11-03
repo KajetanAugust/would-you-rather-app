@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import {handleAddQuestion} from "../actions/questions";
+import { handleAddQuestion } from "../actions/questions";
 import { formatQuestion } from "../utils/helpers";
 import { formatDate } from "../utils/helpers";
+import {Redirect} from "react-router-dom";
 
 class NewQuestion extends Component {
 
     state = {
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        redirect: false
     }
 
     handleInputs = (e) => {
@@ -30,21 +32,25 @@ class NewQuestion extends Component {
         }
     }
 
-    // TODO: fix handleSubmit function, it now sends empty optionOne and optionTwo values
-
-    // handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     const { saveNewQuestion } = this.props
-    //     const { activeUser } = this.props
-    //     // const { optionOne, optionTwo } = this.state
-    //     const optionOne = { text: this.state.optionOne }
-    //     const optionTwo = { text: this.state.optionTwo }
-    //     // console.log(inputValues)
-    //     saveNewQuestion( activeUser, {optionOne, optionTwo} )
-    // }
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const { saveNewQuestion } = this.props
+        const { optionOne, optionTwo} = this.state
+        saveNewQuestion(optionOne, optionTwo)
+        this.setState({
+            redirect: true
+        })
+    }
 
 
     render() {
+
+        const { redirect } = this.state
+
+        if(redirect === true) {
+            return <Redirect to='/' />
+        }
+
         return (
             <div className='create-question'>
                 <h2>Create New Question</h2>
@@ -72,8 +78,8 @@ class NewQuestion extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        saveNewQuestion: (activeUser, question) => {
-            dispatch(handleAddQuestion(activeUser, question));
+        saveNewQuestion: (optionOne, optionTwo) => {
+            dispatch(handleAddQuestion(optionOne, optionTwo));
         },
     };
 }

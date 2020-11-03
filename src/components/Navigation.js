@@ -36,7 +36,7 @@ class Navigation extends Component {
                 <div className='menu'>
                     <h1>Would You Rather?</h1>
                     <NavLink to='/' className='menu-link'>Home</NavLink>
-                    <NavLink to='/new-question' className='menu-link'>New Question</NavLink>
+                    <NavLink to='/add' className='menu-link'>New Question</NavLink>
                     <NavLink to='/leaderboard' className='menu-link'>Leaderboard</NavLink>
                 </div>
                 {

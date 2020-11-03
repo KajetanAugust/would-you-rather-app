@@ -44,8 +44,32 @@ class Question extends Component {
 
 
                     {
-                        this.checkForAnswer(questionAnswers, authedUser) === 'question-box unanswered'
+                        this.props.fromList
                             ?
+                                this.checkForAnswer(questionAnswers, authedUser) === 'question-box unanswered'
+                                    ?
+                                    <div className='question-and-avatar-wrapper'>
+                                        <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
+                                        <div>
+                                            <h2>Would You Rather...</h2>
+                                            {/*<input type="radio" id="optionOne" name="options" value="OptionOne"/>*/}
+                                            <p className='options-preview'>{optionOne.text}</p>
+                                            <h2 className='dots'>...</h2>
+                                            <Link to={`/question/${id}`}><button>Answer now!</button></Link>
+                                        </div>
+                                    </div>
+                                    :
+                                        <div className='question-and-avatar-wrapper'>
+                                            <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
+                                            <div>
+                                                <h2>Would You Rather...</h2>
+                                                {/*<input type="radio" id="optionOne" name="options" value="OptionOne"/>*/}
+                                                <p className='options-preview'>{optionOne.text}</p>
+                                                <h2 className='dots'>...</h2>
+                                                <Link to={`/question/${id}`}><button>See answers</button></Link>
+                                            </div>
+                                        </div>
+                            :
                                 <div className='question-and-avatar-wrapper'>
                                     <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
                                     <form>
@@ -60,17 +84,6 @@ class Question extends Component {
                                         <br />
                                         <button type='submit'>Submit</button>
                                     </form>
-                                </div>
-                            :
-                                <div className='question-and-avatar-wrapper'>
-                                    <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
-                                    <div>
-                                        <h2>Would You Rather...</h2>
-                                        {/*<input type="radio" id="optionOne" name="options" value="OptionOne"/>*/}
-                                        <p className='options-preview'>{optionOne.text}</p>
-                                        <h2 className='dots'>...</h2>
-                                        <Link to={`/result/${id}`}><button>See answers</button></Link>
-                                    </div>
                                 </div>
                     }
 

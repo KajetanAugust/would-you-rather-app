@@ -12,20 +12,23 @@ function addQuestion(question) {
     }
 }
 
-export function handleAddQuestion (question) {
+export function handleAddQuestion (optionOneText, optionTwoText) {
     return (dispatch, getState) => {
         const { authedUser } = getState()
 
         dispatch(showLoading())
 
         return saveQuestion({
+            optionOneText,
+            optionTwoText,
             author: authedUser,
-            question
-        })
-            .then((question) => dispatch(addQuestion(question)))
-            .then(() => dispatch(hideLoading()))
+        }).then((question) => {
+            dispatch(addQuestion(question));
+            dispatch(hideLoading());
+        });
     }
 }
+
 
 export function recieveQuestions (questions) {
     return {

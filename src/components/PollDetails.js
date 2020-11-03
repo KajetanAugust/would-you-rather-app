@@ -28,26 +28,11 @@ class PollDetails extends Component {
                                 key={id}
                             />
                         :
-                            <Result id={id} />
+                            <Result
+                                id={id}
+                            />
                 }
             </div>
-
-
-            // <div className='question-lists'>
-            //     <div className='questions'>
-            //         <h2 className='answered'>Answered Questions</h2>
-            //         <h2 className='unanswered'>Unanswered Questions</h2>
-            //         {
-            //             this.props.questionsIds.map((id) => (
-            //                 <Question
-            //                     id={id}
-            //                     key={id}
-            //                 />
-            //             ))
-            //         }
-            //
-            //     </div>
-            // </div>
         );
     }
 }

@@ -32,16 +32,16 @@ class Result extends Component {
                     <div className='result-answers-wrapper'>
                         <h2>Results:</h2>
                         <div className={this.checkUserAnswer(question.optionOne.votes, authedUser)}>
-                            <h4>become a superhero</h4>
-                            <div className='results-bar'>{(question.optionOne.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100}%</div>
+                            <h4>{question.optionOne.text}</h4>
+                            <div className='results-bar'>{Math.floor((question.optionOne.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100)}%</div>
                             <p>{question.optionOne.votes.length} out of {question.optionOne.votes.length + question.optionTwo.votes.length}</p>
                         </div>
 
                         <br/>
 
                         <div className={this.checkUserAnswer(question.optionTwo.votes, authedUser)}>
-                            <h4>become a supervillain</h4>
-                            <div className='results-bar'>{(question.optionTwo.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100}%</div>
+                            <h4>{question.optionTwo.text}</h4>
+                            <div className='results-bar'>{Math.floor((question.optionTwo.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100)}%</div>
                             <p>{question.optionTwo.votes.length} out of {question.optionOne.votes.length + question.optionTwo.votes.length}</p>
                         </div>
                     </div>

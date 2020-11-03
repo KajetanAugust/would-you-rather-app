@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import {Link, withRouter} from 'react-router-dom';
+import {Link, Redirect, withRouter} from 'react-router-dom';
 import {formatQuestion} from "../utils/helpers";
-import authedUser from "../reducers/authedUser";
+import {handleAnswerQuestion} from "../actions/questions";
 
 class Question extends Component {
+
+    state = {
+        showResults: false
+    }
 
     checkForAnswer = (questionAnswers, authedUser) => {
         if(questionAnswers.optionOne.votes.includes(authedUser) || questionAnswers.optionTwo.votes.includes(authedUser)) {
@@ -14,11 +18,24 @@ class Question extends Component {
         }
     }
 
-    handleSubmit = () => {
 
-    }
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const options = document.getElementsByName('options')
+        let selectedOption;
+        console.log(this.props.question)
+        for (let i = 0; i < options.length; i++) {
+            if(options[i].checked) {
+                selectedOption = options[i].value
+            }
+        }
 
-    handleResultCheck = () => {
+        this.props.answerQuestion(this.props.id, selectedOption)
+        console.log(this.props.question)
+        console.log(this.props.id)
+        // this.setState({
+        //     showResults: true
+        // })
 
     }
 
@@ -34,8 +51,12 @@ class Question extends Component {
         console.log(optionOne)
         console.log(optionTwo)
 
-        if( question === null) {
+        if( question === null ) {
             return <p>This Question doesnt exist.</p>
+        }
+
+        if(this.state.showResults === true) {
+            return <Redirect to={`/question/${this.props.id}`} />
         }
 
         return (
@@ -72,14 +93,16 @@ class Question extends Component {
                             :
                                 <div className='question-and-avatar-wrapper'>
                                     <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
-                                    <form>
+                                    <form
+                                        onSubmit={(e) => this.handleSubmit(e)}
+                                    >
                                         <h2>Would You Rather...</h2>
-                                        <input type="radio" id="optionOne" name="options" value="OptionOne"/>
+                                        <input type="radio" id="optionOne" name="options" value="optionOne"  />
                                         <label htmlFor="OptionOne">{optionOne.text}</label>
 
                                         <br/>
 
-                                        <input type="radio" id="OptionTwo" name="options" value="OptionTwo"/>
+                                        <input type="radio" id="OptionTwo" name="options" value="optionTwo"/>
                                         <label htmlFor="OptionTwo">{optionTwo.text}</label>
                                         <br />
                                         <button type='submit'>Submit</button>
@@ -90,6 +113,14 @@ class Question extends Component {
             </div>
         );
     }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        answerQuestion: (id, answer) => {
+            dispatch(handleAnswerQuestion(id, answer));
+        },
+    };
 }
 
 function mapStateToProps ({authedUser, users, questions}, {id}) {
@@ -103,4 +134,4 @@ function mapStateToProps ({authedUser, users, questions}, {id}) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Question))

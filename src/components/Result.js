@@ -1,27 +1,47 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
+import { withRouter, useParams  } from "react-router-dom";
 
 class Result extends Component {
+
+        checkUserAnswer = (questionToCheck, authedUser) => {
+            if(questionToCheck.includes(authedUser)) {
+                return 'result-answer-box users-answer'
+            } else {
+                return 'result-answer-box'
+            }
+        }
+
     render() {
+
+        let id = window.location.pathname.slice(8);
+        // console.log(id)
+        const question = this.props.questions[id]
+        // console.log(question)
+        const userName = this.props.users[question.author].name
+        // console.log(userName)
+        const { authedUser } = this.props
+
+
         return (
             <div className='result-box'>
-                <h3>Asked by $QUESTION_AUTHOR</h3>
+                <h3>Asked by {userName}:</h3>
                 <div className='answer-and-avatar-wrapper'>
                     <img className='question-author-avatar' alt="Author's avatar" src='https://avatars.dicebear.com/api/bottts/.svg?r=50&m=10&b=%23fff2d5&w=200&h=200&colors[]=deepOrange'/>
                     <div className='result-answers-wrapper'>
                         <h2>Results:</h2>
-                        <div className='result-answer-box'>
+                        <div className={this.checkUserAnswer(question.optionOne.votes, authedUser)}>
                             <h4>become a superhero</h4>
-                            <div className='results-bar'>$ANSWERS_PERCENT</div>
-                            <p>$VOTES out of $TOTAL_VOTES</p>
+                            <div className='results-bar'>{(question.optionOne.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100}%</div>
+                            <p>{question.optionOne.votes.length} out of {question.optionOne.votes.length + question.optionTwo.votes.length}</p>
                         </div>
 
                         <br/>
 
-                        <div className='result-answer-box'>
+                        <div className={this.checkUserAnswer(question.optionTwo.votes, authedUser)}>
                             <h4>become a supervillain</h4>
-                            <div className='results-bar'>$ANSWERS_PERCENT</div>
-                            <p>$VOTES out of $TOTAL_VOTES</p>
+                            <div className='results-bar'>{(question.optionTwo.votes.length/(question.optionOne.votes.length + question.optionTwo.votes.length))*100}%</div>
+                            <p>{question.optionTwo.votes.length} out of {question.optionOne.votes.length + question.optionTwo.votes.length}</p>
                         </div>
                     </div>
                 </div>
@@ -30,4 +50,12 @@ class Result extends Component {
     }
 }
 
-export default connect()(Result);
+function mapStateToProps({ questions, users, authedUser }) {
+    return {
+        questions,
+        users,
+        authedUser
+    };
+}
+
+export default withRouter(connect(mapStateToProps)(Result));

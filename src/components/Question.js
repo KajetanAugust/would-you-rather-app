@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import { Link, withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {formatQuestion} from "../utils/helpers";
 import authedUser from "../reducers/authedUser";
 
@@ -12,6 +12,14 @@ class Question extends Component {
         } else {
             return 'question-box unanswered'
         }
+    }
+
+    handleSubmit = () => {
+
+    }
+
+    handleResultCheck = () => {
+
     }
 
     render() {
@@ -56,13 +64,13 @@ class Question extends Component {
                             :
                                 <div className='question-and-avatar-wrapper'>
                                     <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
-                                    <form>
+                                    <div>
                                         <h2>Would You Rather...</h2>
                                         {/*<input type="radio" id="optionOne" name="options" value="OptionOne"/>*/}
                                         <p className='options-preview'>{optionOne.text}</p>
                                         <h2 className='dots'>...</h2>
-                                        <button type='submit'>See answers</button>
-                                    </form>
+                                        <Link to={`/result/${id}`}><button>See answers</button></Link>
+                                    </div>
                                 </div>
                     }
 

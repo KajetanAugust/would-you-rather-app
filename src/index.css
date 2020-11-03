@@ -225,6 +225,11 @@ body {
   font-weight: 600;
 }
 
+.users-answer {
+  color: green;
+  background-color: lightgreen;
+}
+
 /*/////////////////////////*/
 /*  QUESTIONS LIST STYLES  */
 /*/////////////////////////*/

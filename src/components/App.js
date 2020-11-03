@@ -47,6 +47,10 @@ class App extends Component {
                                     <Navigation id={authedUser} />
                                     <NewQuestion />
                                 </PrivateRoute>
+                                <PrivateRoute path='/result/:id' >
+                                    <Navigation id={authedUser} />
+                                    <Result />
+                                </PrivateRoute>
                             </Switch>
                         </div>
                 </Fragment>

@@ -44,7 +44,7 @@ class Question extends Component {
         const { question } = this.props
         const { authedUser } = this.props
         const {
-            id, author, timestamp, optionOne, optionTwo, avatar, name
+            id, optionOne, optionTwo, avatar, name
         } = question
         const { questionAnswers } = this.props
 

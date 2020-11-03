@@ -5,7 +5,7 @@ import Question from "./Question";
 class QuestionList extends Component {
 
     render() {
-            const { questions } = this.props
+            // const { questions } = this.props
         return (
             <div className='question-lists'>
                 <div className='questions'>

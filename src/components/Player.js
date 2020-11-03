@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import {formatQuestion} from "../utils/helpers";
 
 class Player extends Component {
     render() {

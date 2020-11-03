@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading'
 
@@ -7,14 +7,11 @@ import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
 import Navigation from "./Navigation";
 import NewQuestion from "./NewQuestion";
-// import Question from "./Question";
-import Result from "./Result";
 import QuestionList from "./QuestionList";
 import Leaderboard from "./Leaderboard";
 import PollDetails from "./PollDetails";
 
 import { handleInitialData } from "../actions/shared";
-// import authedUser from "../reducers/authedUser";
 
 class App extends Component {
 

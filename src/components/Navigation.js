@@ -24,7 +24,7 @@ class Navigation extends Component {
 
     render() {
 
-        const {authedUser, userData} = this.props;
+        const { userData} = this.props;
         const { toLogin } = this.state;
 
         if(toLogin === true) {

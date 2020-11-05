@@ -63,7 +63,6 @@ class Question extends Component {
             <div className={this.checkForAnswer(questionAnswers, authedUser)}>
                 <h3>{name} asks:</h3>
 
-
                     {
                         this.props.fromList
                             ?
@@ -73,7 +72,6 @@ class Question extends Component {
                                         <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
                                         <div>
                                             <h2>Would You Rather...</h2>
-                                            {/*<input type="radio" id="optionOne" name="options" value="OptionOne"/>*/}
                                             <p className='options-preview'>{optionOne.text}</p>
                                             <h2 className='dots'>...</h2>
                                             <Link to={`/question/${id}`}><button>Answer now!</button></Link>
@@ -84,7 +82,6 @@ class Question extends Component {
                                             <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>
                                             <div>
                                                 <h2>Would You Rather...</h2>
-                                                {/*<input type="radio" id="optionOne" name="options" value="OptionOne"/>*/}
                                                 <p className='options-preview'>{optionOne.text}</p>
                                                 <h2 className='dots'>...</h2>
                                                 <Link to={`/question/${id}`}><button>See answers</button></Link>

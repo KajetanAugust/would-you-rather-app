@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Redirect } from 'react-router-dom';
 import {connect} from "react-redux";
 
+
 class PrivateRoute extends Component {
 
     render() {
@@ -19,7 +20,7 @@ class PrivateRoute extends Component {
                         <Redirect
                             to={{
                                 pathname: "/login",
-                                state: { from: window.location.href }
+                                state: { from: location },
                             }}
                         />
                     )

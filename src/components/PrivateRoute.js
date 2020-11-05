@@ -3,8 +3,13 @@ import { Route, Redirect } from 'react-router-dom';
 import {connect} from "react-redux";
 
 class PrivateRoute extends Component {
+
     render() {
+
         const { authedUser } = this.props
+        const saveLocation = window.location.href;
+        console.log(saveLocation)
+
         return (
             <Route
                 render={({ location }) =>
@@ -12,13 +17,15 @@ class PrivateRoute extends Component {
                         this.props.children
                     ) : (
                         <Redirect
-                            to= "/login"
+                            to={{
+                                pathname: "/login",
+                                state: { from: window.location.href }
+                            }}
                         />
                     )
                 }
             />
             )
-
     }
 }
 

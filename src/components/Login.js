@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import authedUser from "../reducers/authedUser";
-import {setAuthedUser} from "../actions/authedUser";
+import { setAuthedUser } from "../actions/authedUser";
 
 class Login extends Component {
 
     state = {
         loginValue: this.props.authedUser,
-        toHome: false
+        toHome: false,
     }
 
     handleChange = (e) => {
@@ -18,7 +18,6 @@ class Login extends Component {
         this.setState({
                 loginValue: newValue
         })
-        // console.log(this.state.loginValue)
     }
 
     handleSubmit = (e) => {
@@ -34,9 +33,9 @@ class Login extends Component {
     }
 
     render() {
-
+        const { from } = this.props.location.state || { from: { pathname: '/' } }
         if(this.state.toHome === true) {
-            return <Redirect to='/' />
+            return <Redirect push to={ from } />
         }
 
         return (
@@ -65,7 +64,7 @@ class Login extends Component {
 function mapStateToProps({ users, authedUser }) {
     return {
         users,
-        authedUser
+        authedUser,
     };
 }
 

@@ -1,3 +1,41 @@
+## Would You rather...?
+
+Would you rather is the app **React** and **Redux** app that lets users play "Would You Rather?" game
+
+"The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is against the rules."
+
+#### Login
+
+App uses private routes. When user visits the app, react router redirects user to the '/login' route. When user logs in router redirects to the URL typed in before login or to the home page.
+
+#### List of Questions
+
+Home page contains two lists of questions. User can switch between this two lists using buttons.
+
+* Answering Questions
+
+    When user selects unanswered question app redirects to the quesiton page, where user can answer the question. After answering, the "Result" page is displayed.
+
+* Viewing Question Results
+
+    User can select answered question to see results of the poll.
+
+#### Question Results
+
+Question Results page displays the question with users answer colored green, and additional informations about other users votes.
+
+
+#### Create new Question
+
+User can create new questions by typing option one and option two in the form. Upon submiting the form, question is saved.
+
+#### Leaderboards 
+
+Leaderboard displays points for creating and answering questions for every user.
+
+<hr>
+<hr>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

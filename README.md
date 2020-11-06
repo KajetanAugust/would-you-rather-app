@@ -4,6 +4,7 @@ Would you rather is the app **React** and **Redux** app that lets users play "Wo
 
 "The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is against the rules."
 
+App created using [React](https://reactjs.org), [React router](https://reactrouter.com), [redux](https://redux.js.org), [react-redux](https://react-redux.js.org) [Create React App](https://create-react-app.dev).
 #### Login
 
 App uses private routes. When user visits the app, react router redirects user to the '/login' route. When user logs in router redirects to the URL typed in before login or to the home page.

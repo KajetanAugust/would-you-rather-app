@@ -46,5 +46,4 @@ function mapStateToProps ({authedUser, users}, {id}) {
     }
 }
 
-
 export default connect(mapStateToProps)(Player)

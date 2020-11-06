@@ -20,8 +20,6 @@ class Navigation extends Component {
         })
     }
 
-
-
     render() {
 
         const { userData } = this.props;

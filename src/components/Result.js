@@ -14,15 +14,10 @@ class Result extends Component {
 
     render() {
 
-        // let id = window.location.pathname.slice(9);
         let id = this.props.id
-        // console.log(id)
         const question = this.props.questions[id]
-        // console.log(question)
         const userName = this.props.users[question.author].name
-        // console.log(userName)
         const { authedUser } = this.props
-
 
         return (
             <div className='result-box'>

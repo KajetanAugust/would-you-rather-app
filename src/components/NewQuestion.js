@@ -40,7 +40,6 @@ class NewQuestion extends Component {
         })
     }
 
-
     render() {
 
         const { redirect } = this.state

@@ -144,6 +144,11 @@ body {
   font-weight: 300;
 }
 
+.create-question button:disabled {
+  background-color: rgba(0, 114, 187, 0.2);
+  border-color: rgba(0, 114, 187, 0.2);
+}
+
 /*///////////////////////////*/
 /*  QUESTION DISPLAY STYLES  */
 /*///////////////////////////*/
@@ -171,7 +176,7 @@ body {
 }
 
 .question-and-avatar-wrapper h2, .answer-and-avatar-wrapper h2, .scores-wrapper h2 {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 5px;
 }
 
@@ -336,4 +341,23 @@ body {
   border-bottom: 1px solid lightgray;
   margin-bottom: 25px;
   padding-bottom: 25px;
+}
+
+/*//////////////*/
+/*  404 STYLES  */
+/*//////////////*/
+
+.page-not-found {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.page-not-found button {
+  height: 40px;
+  margin-top: 30px;
+  border: 1px solid #0072BB;
+  border-radius: 5px;
+  background-color: #0072BB;
+  font-size: 1.2rem;
+  color: white;
 }

@@ -17,13 +17,14 @@ class Result extends Component {
         let id = this.props.id
         const question = this.props.questions[id]
         const userName = this.props.users[question.author].name
+        const authorsAvatar = this.props.users[question.author].avatarURL
         const { authedUser } = this.props
 
         return (
             <div className='result-box'>
                 <h3>Asked by {userName}:</h3>
                 <div className='answer-and-avatar-wrapper'>
-                    <img className='question-author-avatar' alt="Author's avatar" src='https://avatars.dicebear.com/api/bottts/.svg?r=50&m=10&b=%23fff2d5&w=200&h=200&colors[]=deepOrange'/>
+                    <img className='question-author-avatar' alt="Author's avatar" src={authorsAvatar}/>
                     <div className='result-answers-wrapper'>
                         <h2>Results:</h2>
                         <div className={this.checkUserAnswer(question.optionOne.votes, authedUser)}>

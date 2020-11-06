@@ -5,7 +5,7 @@ import Question from "./Question";
 class QuestionList extends Component {
 
     state = {
-        showQuestions:true
+        showQuestions:false
     }
 
     switchQuestions = (e) => {
@@ -18,7 +18,7 @@ class QuestionList extends Component {
 
     filterQuestions = ( value, questions, authedUser ) => {
 
-        const questionsKeys = Object.keys(questions)
+        const questionsKeys = this.props.questionsIds
 
         let filteredQuestions = [];
 
@@ -60,12 +60,12 @@ class QuestionList extends Component {
 
                     <button
                         onClick={(e) => {this.switchQuestions(e)}}
-                        disabled={showQuestions ? true : false}
+                        disabled={showQuestions}
                     ><h2 className='answered' >Answered Questions</h2>
                     </button>
                     <button
                         onClick={(e) => {this.switchQuestions(e)}}
-                        disabled={!showQuestions ? true : false}
+                        disabled={!showQuestions}
                     ><h2 className='answered'>Unanswered Questions</h2>
                     </button>
                 </div>
@@ -108,7 +108,7 @@ class QuestionList extends Component {
 function mapStateToProps ({ questions, authedUser }) {
     return {
         questionsIds: Object.keys(questions)
-            .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+            .sort((a,b) => questions[a].timestamp - questions[b].timestamp),
         questions: questions,
         authedUser
     }

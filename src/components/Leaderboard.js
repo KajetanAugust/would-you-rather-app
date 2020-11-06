@@ -4,6 +4,7 @@ import Player from "./Player";
 
 class Leaderboard extends Component {
     render() {
+        console.log(this.props.usersIds)
         return (
             <div>
                 {
@@ -22,7 +23,7 @@ class Leaderboard extends Component {
 function mapStateToProps ({ users }) {
     return {
         usersIds: Object.keys(users)
-            .sort((a,b) => users[b].id - users[a].id)
+            .sort((a,b) => (users[b].questions.length + Object.keys(users[b].answers).length) - (users[a].questions.length + Object.keys(users[a].answers).length))
     }
 }
 

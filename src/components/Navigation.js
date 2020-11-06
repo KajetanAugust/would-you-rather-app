@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink, Redirect, withRouter } from 'react-router-dom'
 import { deleteAuthedUser } from "../actions/authedUser";
 
 class Navigation extends Component {
@@ -26,7 +26,14 @@ class Navigation extends Component {
         const { toLogin } = this.state;
 
         if(toLogin === true) {
-            return <Redirect to='/Login' />
+            return(
+                <Redirect
+                    to={{
+                        pathname: "/login",
+                        state: { from: '/' },
+                    }}
+                />
+                )
         }
 
         return (
@@ -45,7 +52,7 @@ class Navigation extends Component {
                             <div className='player-logout'>
                                 <p>Hello, {userData.name}</p>
                                 <img className='nav-avatar' alt="User's avatar" src={userData.avatarURL} />
-                                <NavLink onClick={(e) => {this.handleLogout(e)}} to='/login' className='menu-link' >Logout</NavLink>
+                                <p onClick={(e) => {this.handleLogout(e)}} className='menu-link' >Logout</p>
                             </div>
                 }
             </div>
@@ -68,4 +75,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navigation));

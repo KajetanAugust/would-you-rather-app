@@ -67,6 +67,7 @@ class NewQuestion extends Component {
                 />
                 <button
                     onClick={(e) => this.handleSubmit(e)}
+                    disabled = {this.state.optionOne === '' || this.state.optionTwo === ''}
                 >Submit</button>
             </div>
         );

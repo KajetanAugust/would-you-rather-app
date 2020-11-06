@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
 import Result from "./Result";
+import PageNotFound from "./PageNotFound";
 
 class PollDetails extends Component {
 
@@ -21,16 +22,21 @@ class PollDetails extends Component {
 
             <div>
                 {
-                    this.checkIfAnswered(authedUser, question) === false
+                    question
                         ?
-                            <Question
-                                id={id}
-                                key={id}
-                            />
+                            this.checkIfAnswered(authedUser, question) === false
+                                ?
+                                    <Question
+                                        id={id}
+                                        key={id}
+                                    />
+                                :
+                                    <Result
+                                        id={id}
+                                    />
                         :
-                            <Result
-                                id={id}
-                            />
+                            <PageNotFound />
+
                 }
             </div>
         );

@@ -10,6 +10,7 @@ import NewQuestion from "./NewQuestion";
 import QuestionList from "./QuestionList";
 import Leaderboard from "./Leaderboard";
 import PollDetails from "./PollDetails";
+import PageNotFound from "./PageNotFound";
 
 import { handleInitialData } from "../actions/shared";
 
@@ -21,9 +22,8 @@ class App extends Component {
 
     render() {
 
-        const { loading, authedUser } = this.props
-        console.log(loading)
-        console.log(authedUser)
+        const { authedUser } = this.props
+
         return (
             <Router>
                 <Fragment>
@@ -49,6 +49,10 @@ class App extends Component {
                                     <Navigation id={authedUser} />
                                     <PollDetails />
                                 </PrivateRoute>
+                                <Route path='/'>
+                                    <Navigation id={authedUser} />
+                                    <PageNotFound />
+                                </Route>
                             </Switch>
                         </div>
                 </Fragment>
@@ -64,4 +68,4 @@ function mapStateToProps ({ authedUser }) {
     }
 }
 
-export default connect()(App)
+export default connect(mapStateToProps)(App)

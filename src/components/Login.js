@@ -34,7 +34,7 @@ class Login extends Component {
     }
 
     render() {
-        const { from } = this.props.location.state || { from: { pathname: '/' } }
+        const { from } = this.props.location.state || '/'
         if(this.state.toHome === true) {
             return <Redirect to={ from } />
         }
@@ -54,7 +54,7 @@ class Login extends Component {
                             <option value='tylermcginnis'>Tyler McGinnis</option>
                             <option value='johndoe'>John Doe</option>
                         </select>
-                        <button type='submit' disabled={!this.state.unlockButton ? true : false}>Login</button>
+                        <button type='submit' disabled={!this.state.unlockButton}>Login</button>
                     </form>
                 </div>
             </div>

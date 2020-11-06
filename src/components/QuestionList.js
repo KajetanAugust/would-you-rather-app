@@ -8,7 +8,8 @@ class QuestionList extends Component {
         showQuestions:true
     }
 
-    switchQuestions = () => {
+    switchQuestions = (e) => {
+        e.preventDefault()
         const changeDisplay = !this.state.showQuestions
         this.setState({
             showQuestions: changeDisplay
@@ -16,56 +17,89 @@ class QuestionList extends Component {
     }
 
     filterQuestions = ( value, questions, authedUser ) => {
+
         const questionsKeys = Object.keys(questions)
-        console.log(questionsKeys)
+
         let filteredQuestions = [];
 
         if (value === true) {
             for (let i = 0; i < questionsKeys.length; i++) {
                 let key = questionsKeys[i]
-                console.log(questions[key])
 
-                //TODO: Filtering not working yet, I can select and log all questions so that's the start
-
-                // if (questions[key].optionOne.votes.includes(authedUser) || questions[key].optionTwo.votes.includes(authedUser)) {
-                //     filteredQuestions.push(questions[key].id)
-                // }
-            }
-
-            if (value === false) {
-                for (let i = 0; i < questions.length; i++) {
-                    if (!questions[i].optionOne.votes.includes(authedUser) && !questions[i].optionTwo.votes.includes(authedUser)) {
-                        filteredQuestions.push(questions[i].id)
-                    }
+                if (questions[key].optionOne.votes.includes(authedUser) || questions[key].optionTwo.votes.includes(authedUser)) {
+                    filteredQuestions.push(questions[key].id)
                 }
-                return filteredQuestions;
             }
         }
+
+        if (value === false) {
+            for (let i = 0; i < questionsKeys.length; i++) {
+                let key = questionsKeys[i]
+
+                if(questions[key].optionOne.votes.includes(authedUser) !== true && questions[key].optionTwo.votes.includes(authedUser) !== true) {
+                    filteredQuestions.push(questions[key].id)
+                }
+            }
+        }
+        return filteredQuestions;
     }
 
     render() {
 
         const { questions, authedUser } = this.props
-
-        const answered = this.filterQuestions(true, questions, authedUser )
+        const { showQuestions } = this.state
+        console.log(authedUser)
+        const answered = this.filterQuestions(true, questions, authedUser ) || []
         console.log(answered)
-
+        const unanswered = this.filterQuestions(false, questions, authedUser ) || []
+        console.log(unanswered)
 
         return (
             <div className='question-lists'>
-                <div className='questions'>
-                    <h2 className='answered'>Answered Questions</h2>
-                    <h2 className='unanswered'>Unanswered Questions</h2>
-                        {
-                            this.props.questionsIds.map((id) => (
-                            <Question
-                                id={id}
-                                key={id}
-                                fromList={true}
-                            />
-                            ))
-                        }
+                <div>
+
+                    <button
+                        onClick={(e) => {this.switchQuestions(e)}}
+                        disabled={showQuestions ? true : false}
+                    ><h2 className='answered' >Answered Questions</h2>
+                    </button>
+                    <button
+                        onClick={(e) => {this.switchQuestions(e)}}
+                        disabled={!showQuestions ? true : false}
+                    ><h2 className='answered'>Unanswered Questions</h2>
+                    </button>
                 </div>
+                {
+                    showQuestions === true
+                        ?
+                        <div className='answered-questions'>
+                            <h2 className='answered-title'>Answered Questions</h2>
+                            {
+                                answered.map((id) => (
+                                    <Question
+                                        id={id}
+                                        key={id}
+                                        fromList = {true}
+                                        answered = {true}
+                                    />
+                                ))
+                            }
+                        </div>
+                        :
+                        <div className='unanswered-questions'>
+                            <h2 className='unanswered-title'>Unanswered Questions</h2>
+                            {
+                                unanswered.map((id) => (
+                                    <Question
+                                        id={id}
+                                        key={id}
+                                        fromList = {true}
+                                        answered = {false}
+                                    />
+                                ))
+                            }
+                        </div>
+                }
             </div>
         );
     }

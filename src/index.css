@@ -24,8 +24,8 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid lightblue;
-  background-color: lightblue;
+  border-bottom: 1px solid #1E91D6;
+  background-color: #1E91D6;
 }
 
 .menu, .player-logout {
@@ -37,25 +37,27 @@ body {
 .menu h1 {
   margin-right: 50px;
   margin-left: 50px;
+  color: white;
 }
 
 .player-logout p, .menu-link {
   margin: auto 15px;
+  color: white;
 }
 
 .menu-link {
   font-size: 1rem;
   text-decoration: none;
   font-weight: 600;
-  padding: 5px;
+  padding: 3px 10px;
 }
 
 .menu-link:visited {
-  color: black;
+  color: #E4CC37;
 }
 
  .menu-link:hover {
-   background: lightsalmon;
+   background: #0072BB;
    border-radius: 15px;
    color: white;
  }
@@ -110,11 +112,16 @@ body {
   width: 33%;
   height: 40px;
   margin-top: 15px;
-  border: 1px solid lightblue;
+  border: 1px solid #0072BB;
   border-radius: 5px;
-  background-color: lightblue;
+  background-color: #0072BB;
   font-size: 1.2rem;
   color: white;
+}
+
+.login-window button:disabled {
+  background-color: rgba(0, 114, 187, 0.2);
+  border-color: rgba(0, 114, 187, 0.2);
 }
 
 /*//////////////////////////*/
@@ -187,9 +194,9 @@ body {
   width: 66%;
   height: 40px;
   margin-top: 30px;
-  border: 1px solid lightblue;
+  border: 1px solid #0072BB;
   border-radius: 5px;
-  background-color: lightblue;
+  background-color: #0072BB;
   font-size: 1.2rem;
   color: white;
   margin-right: 0;
@@ -226,51 +233,60 @@ body {
 }
 
 .users-answer {
-  color: green;
-  background-color: lightgreen;
+  color: white;
+  background-color: #499F68;
 }
 
 /*/////////////////////////*/
 /*  QUESTIONS LIST STYLES  */
 /*/////////////////////////*/
 
-.questions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "answered unanswered";
-  grid-auto-flow: column;
-  grid-gap: 5px;
+.question-lists {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 25px 25px;
 }
 
-.answered {
-  grid-area: answered;
-  grid-row-start: auto;
-  grid-row-end: auto;
-  border-color: lightgreen;
+.answered-questions, .unanswered-questions {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 25px;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  border-radius: 5px;
 }
 
-.answered h3 {
-  background-color: lightgreen;
+.answered-questions {
+  border: 1px solid #499F68;
 }
 
-.unanswered {
-  grid-area:unanswered;
-  grid-row-start: inherit;
-  grid-row-end: auto;
-  border-color: lightsalmon;
+.unanswered-questions {
+  border: 1px solid #E18335;
+
 }
 
-.unanswered h3 {
-  background-color: lightsalmon;
-}
-
-h2.answered, h2.unanswered {
+.answered-title, .unanswered-title {
+  width: 100%;
+  height: 50px;
+  padding-top: 5px;
+  margin-top: 0;
   text-align: center;
+  color: white;
+}
+
+.answered-title {
+  background-color: #499F68;
+}
+
+.unanswered-title {
+  background-color: #E18335;
 }
 
 .question-box {
-  width: 80%;
+  width: 60%;
 }
 
 /*///////////////////////*/
@@ -296,7 +312,7 @@ h2.answered, h2.unanswered {
 }
 
 .total-score h2 {
-  background-color: cadetblue;
+  background-color: #499F68;
   text-align: center;
   width: 90px;
   height: 90px;

@@ -10,13 +10,14 @@ class Login extends Component {
     state = {
         loginValue: this.props.authedUser,
         toHome: false,
+        unlockButton: false
     }
 
     handleChange = (e) => {
         const newValue = e.target.value;
-        // console.log(newValue)
         this.setState({
-                loginValue: newValue
+                loginValue: newValue,
+                unlockButton: true
         })
     }
 
@@ -53,7 +54,7 @@ class Login extends Component {
                             <option value='tylermcginnis'>Tyler McGinnis</option>
                             <option value='johndoe'>John Doe</option>
                         </select>
-                        <button type='submit'>Login</button>
+                        <button type='submit' disabled={!this.state.unlockButton ? true : false}>Login</button>
                     </form>
                 </div>
             </div>

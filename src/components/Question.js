@@ -1,23 +1,14 @@
 import React, { Component } from "react";
-import {connect} from "react-redux";
-import {Link, Redirect, withRouter} from 'react-router-dom';
-import {formatQuestion} from "../utils/helpers";
-import {handleAnswerQuestion} from "../actions/questions";
+import { connect } from "react-redux";
+import { Link, Redirect, withRouter } from 'react-router-dom';
+import { formatQuestion } from "../utils/helpers";
+import { handleAnswerQuestion } from "../actions/questions";
 
 class Question extends Component {
 
     state = {
         showResults: false
     }
-
-    checkForAnswer = (questionAnswers, authedUser) => {
-        if(questionAnswers.optionOne.votes.includes(authedUser) || questionAnswers.optionTwo.votes.includes(authedUser)) {
-            return 'question-box answered'
-        } else {
-            return 'question-box unanswered'
-        }
-    }
-
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -60,13 +51,13 @@ class Question extends Component {
         }
 
         return (
-            <div className={this.checkForAnswer(questionAnswers, authedUser)}>
+            <div className='question-box'>
                 <h3>{name} asks:</h3>
 
                     {
                         this.props.fromList
                             ?
-                                this.checkForAnswer(questionAnswers, authedUser) === 'question-box unanswered'
+                                this.props.answered === false
                                     ?
                                     <div className='question-and-avatar-wrapper'>
                                         <img className='question-author-avatar' alt="Author's avatar" src={avatar}/>

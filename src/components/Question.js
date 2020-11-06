@@ -33,11 +33,9 @@ class Question extends Component {
     render() {
 
         const { question } = this.props
-        const { authedUser } = this.props
         const {
             id, optionOne, optionTwo, avatar, name
         } = question
-        const { questionAnswers } = this.props
 
         console.log(optionOne)
         console.log(optionTwo)
@@ -115,9 +113,7 @@ function mapStateToProps ({authedUser, users, questions}, {id}) {
     const question = questions[id]
 
     return {
-        authedUser,
         question: question ? formatQuestion(question, users[question.author], authedUser ) : null,
-        questionAnswers: question,
         users: users
     }
 }

@@ -37,7 +37,9 @@ Leaderboard displays points for creating and answering questions for every user.
 <hr>
 <hr>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I have used Mentor Help on Udacity provided in this threads: 
+* https://knowledge.udacity.com/questions/370596
+* https://knowledge.udacity.com/questions/371937
 
 ## Available Scripts
 

@@ -14,10 +14,13 @@ class Navigation extends Component {
         e.preventDefault();
         const { logoutUser } = this.props
         logoutUser();
-
         this.setState({
             toLogin: true
         })
+    }
+
+    componentWillUnmount() {
+        window.history.replaceState(null, null, '/')
     }
 
     render() {
@@ -27,12 +30,7 @@ class Navigation extends Component {
 
         if(toLogin === true) {
             return(
-                <Redirect
-                    to={{
-                        pathname: "/login",
-                        state: { from: '/' },
-                    }}
-                />
+                <Redirect to="/login"/>
                 )
         }
 

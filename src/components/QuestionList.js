@@ -41,7 +41,7 @@ class QuestionList extends Component {
                 }
             }
         }
-        return filteredQuestions;
+        return filteredQuestions.sort(function(a,b){return questions[b].timestamp - questions[a].timestamp});
     }
 
     render() {
@@ -57,16 +57,15 @@ class QuestionList extends Component {
         return (
             <div className='question-lists'>
                 <div>
-
-                    <button
-                        onClick={(e) => {this.switchQuestions(e)}}
-                        disabled={showQuestions}
-                    ><h2 className='answered' >Answered Questions</h2>
-                    </button>
                     <button
                         onClick={(e) => {this.switchQuestions(e)}}
                         disabled={!showQuestions}
                     ><h2 className='answered'>Unanswered Questions</h2>
+                    </button>
+                    <button
+                        onClick={(e) => {this.switchQuestions(e)}}
+                        disabled={showQuestions}
+                    ><h2 className='answered' >Answered Questions</h2>
                     </button>
                 </div>
                 {
@@ -108,7 +107,7 @@ class QuestionList extends Component {
 function mapStateToProps ({ questions, authedUser }) {
     return {
         questionsIds: Object.keys(questions)
-            .sort((a,b) => questions[a].timestamp - questions[b].timestamp),
+            .sort((b,a) => questions[b].timestamp - questions[a].timestamp),
         questions: questions,
         authedUser
     }

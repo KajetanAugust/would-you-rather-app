@@ -20,7 +20,7 @@ class Navigation extends Component {
     }
 
     componentWillUnmount() {
-        window.history.replaceState(null, null, '/')
+        window.history.pushState(null, null, '/')
     }
 
     render() {

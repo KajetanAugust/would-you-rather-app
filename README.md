@@ -40,6 +40,7 @@ Leaderboard displays points for creating and answering questions for every user.
 I have used Mentor Help on Udacity provided in this threads: 
 * https://knowledge.udacity.com/questions/370596
 * https://knowledge.udacity.com/questions/371937
+* https://knowledge.udacity.com/questions/374210
 
 ## Available Scripts
 

@@ -34,9 +34,10 @@ class Login extends Component {
     }
 
     render() {
-        const { from } = this.props.location.state || '/'
+        let { from } = this.props.location.state || '/'
+        console.log("this.props.location.state =>", this.props.location.state);
         if(this.state.toHome === true) {
-            return <Redirect to={ from } />
+            return <Redirect to= { from } />
         }
 
         return (

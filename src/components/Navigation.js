@@ -10,8 +10,7 @@ class Navigation extends Component {
 
     }
 
-    handleLogout = (e) => {
-        e.preventDefault();
+    handleLogout = () => {
         const { logoutUser } = this.props
         logoutUser();
         this.setState({
@@ -21,6 +20,7 @@ class Navigation extends Component {
 
     componentWillUnmount() {
         window.history.pushState(null, null, '/')
+        this.handleLogout()
     }
 
     render() {
@@ -30,7 +30,12 @@ class Navigation extends Component {
 
         if(toLogin === true) {
             return(
-                <Redirect to="/login"/>
+                <Redirect
+                    to={{
+                        pathname: "/login",
+                        state: { from: '/' },
+                    }}
+                />
                 )
         }
 
@@ -50,7 +55,7 @@ class Navigation extends Component {
                             <div className='player-logout'>
                                 <p>Hello, {userData.name}</p>
                                 <img className='nav-avatar' alt="User's avatar" src={userData.avatarURL} />
-                                <p onClick={(e) => {this.handleLogout(e)}} className='menu-link' >Logout</p>
+                                <NavLink to='/login' className='menu-link'>Logout</NavLink>
                             </div>
                 }
             </div>

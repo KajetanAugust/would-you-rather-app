@@ -8,8 +8,6 @@ class PrivateRoute extends Component {
     render() {
 
         const { authedUser } = this.props
-        const saveLocation = window.location.href;
-        console.log(saveLocation)
 
         return (
             <Route

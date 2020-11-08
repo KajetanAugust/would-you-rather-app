@@ -14,9 +14,9 @@ class PollDetails extends Component {
         const { authedUser, questions } = this.props
         let id = window.location.pathname.slice(10);
         const question = questions[id]
-        console.log(id)
-        console.log(questions)
-        console.log(authedUser)
+        // console.log(id)
+        // console.log(questions)
+        // console.log(authedUser)
 
         return (
 

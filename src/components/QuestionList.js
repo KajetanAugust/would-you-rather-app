@@ -48,11 +48,11 @@ class QuestionList extends Component {
 
         const { questions, authedUser } = this.props
         const { showQuestions } = this.state
-        console.log(authedUser)
+        // console.log(authedUser)
         const answered = this.filterQuestions(true, questions, authedUser ) || []
-        console.log(answered)
+        // console.log(answered)
         const unanswered = this.filterQuestions(false, questions, authedUser ) || []
-        console.log(unanswered)
+        // console.log(unanswered)
 
         return (
             <div className='question-lists'>

@@ -19,14 +19,14 @@ class NewQuestion extends Component {
             this.setState({
                 optionOne: inputValue
             })
-            console.log('option one:', this.state.optionOne)
+            // console.log('option one:', this.state.optionOne)
         }
 
         if( inputName === 'option-two-text' ) {
             this.setState({
                 optionTwo: inputValue
             })
-            console.log('option two:', this.state.optionTwo)
+            // console.log('option two:', this.state.optionTwo)
         }
     }
 

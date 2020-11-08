@@ -14,7 +14,7 @@ class Question extends Component {
         e.preventDefault()
         const options = document.getElementsByName('options')
         let selectedOption;
-        console.log(this.props.question)
+        // console.log(this.props.question)
         for (let i = 0; i < options.length; i++) {
             if(options[i].checked) {
                 selectedOption = options[i].value
@@ -22,8 +22,8 @@ class Question extends Component {
         }
 
         this.props.answerQuestion(this.props.id, selectedOption)
-        console.log(this.props.question)
-        console.log(this.props.id)
+        // console.log(this.props.question)
+        // console.log(this.props.id)
         // this.setState({
         //     showResults: true
         // })
@@ -37,8 +37,8 @@ class Question extends Component {
             id, optionOne, optionTwo, avatar, name
         } = question
 
-        console.log(optionOne)
-        console.log(optionTwo)
+        // console.log(optionOne)
+        // console.log(optionTwo)
 
         if( question === null ) {
             return <p>This Question doesnt exist.</p>
